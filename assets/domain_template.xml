@@ -1,0 +1,81 @@
+<domain type="kvm">
+  <name></name>
+  <memory unit="KiB">3145728</memory>
+  <currentMemory unit="KiB">3145728</currentMemory>
+  <vcpu placement="static">1</vcpu>
+  <resource>
+    <partition>/machine</partition>
+  </resource>
+  <os>
+    <type arch="x86_64" machine="pc">hvm</type>
+    <boot dev="hd" />
+  </os>
+  <features>
+    <acpi />
+    <apic />
+  </features>
+  <cpu mode="host-model">
+    <model fallback="allow" />
+    <topology cores="1" sockets="1" threads="1" />
+  </cpu>
+  <clock offset="utc">
+    <timer name="rtc" tickpolicy="catchup" />
+    <timer name="pit" tickpolicy="delay" />
+    <timer name="hpet" present="no" />
+  </clock>
+  <on_poweroff>destroy</on_poweroff>
+  <on_reboot>restart</on_reboot>
+  <on_crash>destroy</on_crash>
+  <pm>
+    <suspend-to-mem enabled="no" />
+    <suspend-to-disk enabled="no" />
+  </pm>
+  <devices>
+    <emulator>/usr/bin/kvm-spice</emulator>
+    <disk device="disk" type="file">
+      <driver name="qemu" type="qcow2" />
+      <source file="">Test</source>
+      <backingStore index="1" type="file">
+        <format type="raw" />
+        <source file="" />
+        <backingStore />
+      </backingStore>
+      <target bus="ide" dev="hda" />
+      <alias name="ide0-0-0" />
+      <address bus="0" controller="0" target="0" type="drive" unit="0" />
+    </disk>
+    <controller index="0" type="ide">
+      <alias name="ide" />
+      <address bus="0x00" domain="0x0000" function="0x1" slot="0x01" type="pci" />
+    </controller>
+    <controller index="0" type="virtio-serial">
+      <alias name="virtio-serial0" />
+      <address bus="0x00" domain="0x0000" function="0x0" slot="0x05" type="pci" />
+    </controller>
+    <interface type="bridge">
+      <mac address="52:54:00:bb:4b:a2" />
+      <source bridge="virbr0" />
+      <target dev="vnet0" />
+      <model type="virtio" />
+      <alias name="net0" />
+      <address bus="0x00" domain="0x0000" function="0x0" slot="0x03" type="pci" />
+    </interface>
+    <serial type="tcp">
+      <source host="127.0.0.1" mode="bind" service="2001" />
+      <protocol type="telnet" />
+      <target port="0" />
+      <alias name="serial0" />
+    </serial>
+    <console type="tcp">
+      <source host="127.0.0.1" mode="bind" service="2001" />
+      <protocol type="telnet" />
+      <target port="0" type="serial" />
+      <alias name="serial0" />
+    </console>
+    <channel type="spicevmc">
+      <target name="com.redhat.spice.0" state="disconnected" type="virtio" />
+      <alias name="channel0" />
+      <address bus="0" controller="0" port="1" type="virtio-serial" />
+    </channel>
+  </devices>
+</domain>
