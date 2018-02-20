@@ -44,7 +44,7 @@ In this tutorial a Debian-based system is assumed. More specifically, all comman
 The recommended virtual R&S v5.1 environment uses a mix of CSR 1000v routers and IOS on Unix (IOU) switches. Prior to installing any packages, the appropriate images should be made available on the host machine.
 
 #### **1.1 - Define environment variables**
-Although the images provided above are recommended for the R&S lab, different images may be used. If you happen to change the version, update the variables below as they will be referenced during the installation process various times. Additionally, make sure that the CSR image is a `.iso` and that the OUI L2 image is unpacked to a `.bin`. 
+Although the images mentioned below are recommended for the R&S lab, different images may be used. If you happen to change the version, update the variables below as they will be referenced during the installation process various times. Additionally, make sure that the CSR image is a `.iso` and that the OUI L2 image is unpacked to a `.bin`. 
 
 The latest stable version of the Linux kernel is assumed during this tutorial by exporting the `KERNEL_VER`. If you prefer a different kernel version override the environment variable manually.
 
