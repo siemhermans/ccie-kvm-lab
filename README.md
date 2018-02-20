@@ -4,7 +4,7 @@ This in-depth build tutorial provides a step-by-step process to deploy the INE R
 
 This build tutorial mainly focuses on building the INE lab topology as show below, however, with minor modifications any arbitrary lab environment can be created.
 
-![INE Physical Lab Topology](https://d1hx5100zal7gj.cloudfront.net/images/ine/ine-ccie-lab-topology.jpg "INE Lab Environment")
+![INE Physical Lab Topology](http://labs.ine.com/uploads/workbooks/images/originals/NG4mDSTeGWs3vP8qh8UU.png "INE Lab Environment")
 
 In this tutorial a Debian-based system is assumed. More specifically, all commands have been tested on Ubuntu 16.04.3 LTS. RHEL based systems may require slightly different packages and/or configurations. Your mileage may vary. Furthermore, during this tutorial the KVM node will commonly be referenced to as the 'host machine'. Similarly, the routers and switches running on the host machine will be referred to as the 'guest nodes'. 
 
